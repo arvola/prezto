@@ -37,6 +37,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'git' \
+  'kube-ps1' \
+  'node' \
   'prompt'
 
 #

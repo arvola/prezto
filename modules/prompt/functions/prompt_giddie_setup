@@ -1,16 +1,14 @@
 #
-# A colourful, friendly, multiline theme with some handy features:
+# Singleline theme based on the giddie theme by Paul Gideon Dann.
 #
 # Authors:
 #   Paul Gideon Dann <pdgiddie@gmail.com>
+#   Mikael Arvola <mikael@arvola.com>
 #
 # Features:
 #   - Simple VCS branch, staged, and unstaged indication.
-#   - Prompt character is different in a VCS repository.
 #   - Last command exit status is displayed when non-zero.
-#
-# Screenshots:
-#   http://i.imgur.com/rCo3S.png
+#   - Kubernetes context.
 #
 
 function prompt_giddie_precmd {
@@ -50,7 +48,13 @@ function prompt_giddie_setup {
   # Define prompts.
   PROMPT='%(?..%F{red}%B-> [%?]%b%f
 )%F{green}%n@%U%m%f%u ${git_info:+${(e)git_info[prompt]}}%F{cyan}${_prompt_giddie_pwd}%f: '
-  RPROMPT=
+
+  if (( $+functions[kube_ps1] )); then
+    RPROMPT='$(kube_ps1)'
+  else
+    RPROMPT=''
+  fi
+
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
 
