@@ -18,6 +18,8 @@ KUBE_PS1_SYMBOL_USE_IMG=true
 KUBE_PS1_SYMBOL_COLOR='cyan'
 KUBE_PS1_SEPARATOR=''
 
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
